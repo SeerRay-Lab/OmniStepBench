@@ -10,6 +10,7 @@
   <a href="https://seerray-lab.github.io/OmniStepBench/#leaderboard"><img src="https://img.shields.io/badge/Leaderboard-e8604c?style=flat-square" alt="Interactive leaderboard"></a>
   <a href="https://github.com/SeerRay-Lab/OmniStepBench"><img src="https://img.shields.io/badge/Code-29233f?style=flat-square&amp;logo=github&amp;logoColor=white" alt="GitHub code"></a>
   <a href="https://huggingface.co/datasets/SeerRay-Lab/OmniStepBench"><img src="https://img.shields.io/badge/Dataset-e3ad25?style=flat-square&amp;logo=huggingface&amp;logoColor=white" alt="Hugging Face dataset"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue?style=flat-square" alt="License: Apache-2.0"></a>
   <a href="#citation"><img src="https://img.shields.io/badge/BibTeX-d6336c?style=flat-square" alt="Citation"></a>
 </p>
 
@@ -194,6 +195,10 @@ DEFAULT_JUDGE_MODEL = "PROVIDER_NAME/MODEL_NAME"
   year    = {2026}
 }
 ```
+
+## License
+
+The code in this repository is released under the [Apache License 2.0](LICENSE). The benchmark runner is derived from [PinchBench](https://github.com/pinchbench/skill) (MIT License); see [NOTICE](NOTICE). The tasks are adapted from 22 public benchmarks and remain subject to their original licenses.
 
 ## Acknowledgements
 
