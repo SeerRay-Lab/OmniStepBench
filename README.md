@@ -20,17 +20,18 @@
 
 ## News
 
-- **5 Sep 2026** &mdash; The OmniStepBench paper is on [arXiv](https://arxiv.org/abs/2609.06059).
-- The [project page](https://seerray-lab.github.io/OmniStepBench/) is live, with an interactive leaderboard, the accuracy&ndash;cost frontiers and the evidence-based audit.
+- **Oct 2026** &mdash; The leaderboard covers 42 models (30 API + 12 local), including GPT-6-Astra, GPT-6.1-Sol, Claude-Opus-5.5, Kimi-K3, Qwen3.8-Max and MiMo-V2.6.
+- **5 Sep 2026** &mdash; The paper is on [arXiv](https://arxiv.org/abs/2609.06059).
+- The [project page](https://seerray-lab.github.io/OmniStepBench/) has the interactive leaderboard, the accuracy&ndash;cost frontiers and the evidence-based audit.
 
 ## Overview
 
-OmniStepBench (Deployment-Aware Agent Evaluation across Modalities and Task Complexity) is a benchmark for evaluating models as agents.
+OmniStepBench is a benchmark for deployment-aware agent evaluation across modalities and task complexity.
 Built on a shared OpenClaw execution environment, it organizes **233 tasks** selected and adapted from
 **22 source benchmarks** into a **2&times;3 workload matrix** defined by input modality and execution form, and
 evaluates them under a unified contract-based protocol with evidence-based score auditing. The paper evaluates
-23 commercial API models and 12 locally deployed open-weight models over
-7,587 model&ndash;task runs, reporting accuracy and token consumption alongside reference costs for API models.
+30 commercial API models and 12 locally deployed open-weight models (42 models in total) over
+9,218 model&ndash;task runs, reporting accuracy and token consumption alongside reference costs for API models.
 
 <p align="center">
   <a href="docs/assets/img/overview.png"><img src="docs/assets/img/overview.png" alt="Overview of OmniStepBench: task construction, shared agent execution, scoring with evidence-based audit, and metrics" width="100%"></a>
@@ -53,33 +54,31 @@ Scoring: 125 automated, 73 LLM-judged and 35 hybrid tasks.
 ## Leaderboard
 
 Audited accuracy (%) from paper Table 1 (first 10 API models in the paper's order, plus the strongest local model).
-The [interactive leaderboard](https://seerray-lab.github.io/OmniStepBench/#leaderboard) covers all 35 models, with API/local filters and sorting.
+The [interactive leaderboard](https://seerray-lab.github.io/OmniStepBench/#leaderboard) covers all 42 models, with API/local filters and sorting.
 
 | Model | Text-SS | Text-MS | Text-MT | Text Avg | MM-SS | MM-MS | MM-MT | MM Avg |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| GPT-6-Astra | 96.0 | 82.8 | 70.6 | 80.3 | 70.0 | 94.2 | 67.6 | 78.0 |
+| GPT-6.1-Sol | 96.1 | 84.0 | 71.3 | 81.2 | 70.0 | 92.3 | 62.9 | 75.7 |
+| Claude-Opus-5.5 | 99.2 | 84.4 | 65.0 | 79.6 | 75.0 | 92.3 | 53.2 | 73.7 |
 | Claude-Opus-4.8 | 98.8 | 78.1 | 65.3 | 76.3 | 85.0 | 69.2 | 61.8 | 71.1 |
+| Kimi-K3 | 95.3 | 82.9 | 64.0 | 78.0 | 80.0 | 69.2 | 54.1 | 66.9 |
+| MiMo-V2.6-Pro | 91.5 | 82.9 | 63.6 | 77.4 | 85.0 | 69.2 | 50.4 | 67.0 |
 | GPT-5.5 | 94.1 | 83.6 | 59.8 | 76.8 | 90.0 | 75.0 | 42.4 | 67.7 |
 | Claude-Opus-4.6 | 91.5 | 83.4 | 58.3 | 75.9 | 75.0 | 76.2 | 48.1 | 65.9 |
+| Qwen3.8-Max | 89.7 | 82.6 | 65.0 | 77.5 | 80.0 | 61.5 | 48.4 | 62.1 |
 | Gemini-3.1-Pro | 96.4 | 80.7 | 56.1 | 74.3 | 85.0 | 88.5 | 32.7 | 67.9 |
-| GPT-5.4 | 92.1 | 82.4 | 59.6 | 75.8 | 82.5 | 71.2 | 40.3 | 63.5 |
-| MiMo-V2.5 | 94.7 | 82.5 | 57.5 | 75.5 | 80.0 | 66.7 | 43.0 | 62.1 |
-| Claude-Sonnet-4.6 | 89.2 | 76.8 | 59.9 | 72.6 | 75.0 | 59.6 | 42.3 | 57.9 |
-| Qwen3.6-Plus | 95.5 | 77.7 | 54.8 | 72.1 | 75.0 | 61.5 | 41.2 | 58.2 |
-| Qwen3.5-Plus | 89.5 | 77.3 | 53.9 | 70.9 | 70.0 | 69.2 | 39.1 | 58.8 |
-| Doubao-Seed2.0-Pro | 95.9 | 77.4 | 51.1 | 70.8 | 75.0 | 61.5 | 42.6 | 58.7 |
 | Qwen3.6-27B *(best local)* | 84.9 | 72.1 | 37.2 | 61.8 | 75.0 | 55.8 | 38.5 | 55.1 |
 
-**No single model dominates all workload groups:** Claude-Opus-4.8 leads Text-SS (98.8),
-Text-MT (65.3) and MM-MT (61.8); GPT-5.5 leads Text-MS (83.6)
-and MM-SS (90.0); Gemini-3.1-Pro leads MM-MS (88.5).
+**No model dominates all six workload groups:** Claude-Opus-5.5 leads Text-SS (99.2) and Text-MS (84.4); GPT-6.1-Sol leads Text-MT (71.3); GPT-5.5 leads MM-SS (90.0); GPT-6-Astra leads MM-MS (94.2) and MM-MT (67.6).
 
 ### Evidence-based audit
 
 LLM judges can award credit that the execution evidence does not support. OmniStepBench applies deterministic post-hoc
 rules to every score that involves the primary judge (Qwen3.5-VL-Plus) and routes flagged cases to a meta-judge from a
-different model family (Claude-Opus-4.6). Of 3,340 judge/hybrid calls, 182 were flagged and
+different model family (Claude-Opus-4.6). Of 9,218 model&ndash;task runs, 4,096 are judge/hybrid calls; 182 were flagged and
 **143 unsupported positive scores were removed**. Against human experts (100 stratified
-trajectories), the mean absolute error drops from 0.098 (primary judge) to 0.049 (after the meta-judge).
+trajectories from a 3,340-call validation pool), the mean absolute error drops from 0.098 (primary judge) to 0.049 (after the meta-judge).
 
 | Pattern | Local | API | Total |
 | --- | ---: | ---: | ---: |

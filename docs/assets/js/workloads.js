@@ -175,6 +175,14 @@
   var chipBtns = {}, segEls = {}, pinned = null;
   function buildSources() {
     U.$('#sources-sub').textContent = D.stats.sources + ' public benchmarks contribute ' + D.stats.tasks + ' tasks. Bar width is the number of tasks each source contributes; color shows its workload group.';
+    /* the paper's task-composition sunburst (appendix), opened in the lightbox like the Fig. 1 button */
+    var sb = U.fig('fig-sunburst');
+    if (sb) {
+      var sbBtn = h('button', { class: 'btn btn--sm btn--ghost', attrs: { type: 'button', id: 'sunburst-btn', 'aria-label': 'Paper’s figure: task composition (' + sb.section + '), opens a larger view' } }, U.icon('i-image'), h('span', { text: 'Paper’s figure' }));
+      sbBtn.addEventListener('click', function () { U.lightbox(U.IMG + sb.file, sb.alt, sb.caption + ' (' + sb.section + ')'); });
+      var btns = U.$('#sources-btns');
+      btns.insertBefore(sbBtn, btns.firstChild);
+    }
     var lg = U.$('#sources-legend');
     U.GROUPS.forEach(function (g) {
       lg.appendChild(h('span', { class: 'legend__item' }, h('span', { class: 'legend__sw', style: { background: U.wlVar(g.key) } }), g.label));
@@ -222,7 +230,7 @@
       { label: '# Tasks', num: true, get: function (s) { return String(s.count); } },
       { label: 'Group', get: function (s) { return U.group(s.group).label; } },
       { label: 'Scoring', get: function (s) { return s.scoring; } }
-    ], D.sources, 'Source benchmarks (Table 9)'));
+    ], D.sources, 'Source benchmarks (Table 11)'));
   }
   function srcTip(s) {
     var g = U.group(s.group);

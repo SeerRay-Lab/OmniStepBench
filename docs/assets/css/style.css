@@ -236,7 +236,7 @@ code, pre, kbd { font-family: var(--font-mono); }
 .hero__meta { margin-bottom: 14px; }
 .wordmark {
   font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(56px, 8.4vw, 112px); line-height: .92; letter-spacing: -0.025em;
+  font-size: clamp(56px, 8.2vw, 100px); line-height: .92; letter-spacing: -0.025em;
   color: var(--ink);
   text-shadow: 0 4px 0 rgba(255, 255, 255, .75);
   margin: 0 0 12px;
@@ -1641,3 +1641,32 @@ th[aria-sort="descending"] .sort-btn .arr, th[aria-sort="ascending"] .sort-btn .
 /* Hero and cite link rows wrap in pairs (paper · code and data · this page), so the HF Dataset button never
    leaves one button alone on a row (homepage/tools/add_hf_links.py) */
 .btn-pair { display: flex; gap: inherit; }
+
+/* ---- OmniStepBench: longer wordmark, continuity note, 42-model findings ---- */
+/* "OmniStepBench" is about 6.8 em wide: one line in the copy column from 361 px up (the <wbr> between
+   the two halves lets it break cleanly only if a viewport is narrower still) */
+@media (max-width: 560px) { .wordmark { font-size: min(56px, 12.4vw); } }
+.hero__former { font-size: 13.5px; font-weight: 700; color: var(--ink-2); }
+/* the longer subtitle: two lines ("… Agent Evaluation / across … Task Complexity") from 390 px up, balanced below */
+.hero__expansion { max-width: 36ch; text-wrap: balance; }
+.hero__tagline { text-wrap: balance; }
+/* "If OmniStepBench helps your work": no lone "work" on the second line */
+#cite-title { text-wrap: balance; }
+/* the longer wordmark reaches the old spot of the first fish (1024–1366 px): it now swims clear, right of the title */
+.hero__fish--a { top: 22%; left: 63%; }
+/* phones: the third fish swims left of the mascot instead of over the end of the affiliation lines */
+@media (max-width: 720px) { .hero__fish--c { top: 63%; left: 8%; } }
+/* nine findings: in the three-column grid a last card alone in its row spans the row */
+@media (min-width: 1101px) {
+  .findings-grid > .finding:last-child:nth-child(3n) { grid-column: 1 / -1; }
+  .findings-grid > .finding:last-child:nth-child(3n) .finding__text { max-width: 96ch; }
+}
+.finding .mini-legend { gap: 4px 14px; font-size: 13px; }
+.finding .mini-legend .legend__sw { width: 12px; height: 12px; }
+.finding .mini-bars__h { margin: 4px 0 -2px; font-size: 12px; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; color: var(--ink-muted); }
+.mini-bars--gap .mini-bar { grid-template-columns: minmax(0, 150px) minmax(0, 1fr) 38px; }
+.xchips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.xchips .vs-chip { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 6px 10px 7px; }
+.xchips .vs-chip b { overflow-wrap: anywhere; }
+.xchips__k { font-size: 11.5px; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; color: var(--ink-muted); }
+.finding .xchips__note { margin: 0; font-size: 12.5px; color: var(--ink-muted); }

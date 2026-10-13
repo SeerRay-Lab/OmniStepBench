@@ -85,10 +85,10 @@
       ['cost', U.initCost], ['reliability', U.initReliability], ['quickstart', U.initQuickstart]
     ];
     steps.forEach(function (s) {
-      try { s[1](); } catch (e) { console.error('[OmniStepBench] ' + s[0] + ' failed:', e); }
+      try { s[1](); } catch (e) { console.error('[' + U.D.meta.shortName + '] ' + s[0] + ' failed:', e); }
     });
     [['toggles', U.initViewToggles], ['lightbox', U.initLightbox], ['nav', nav], ['reveal', reveal], ['motion', pauseOffscreen], ['motion-toggle', motionToggle]].forEach(function (s) {
-      try { s[1](); } catch (e) { console.error('[OmniStepBench] ' + s[0] + ' failed:', e); }
+      try { s[1](); } catch (e) { console.error('[' + U.D.meta.shortName + '] ' + s[0] + ' failed:', e); }
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();

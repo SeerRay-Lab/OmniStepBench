@@ -6,21 +6,21 @@
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#FFF8EC">
 <title>OmniStepBench: Deployment-Aware Agent Evaluation across Modalities and Task Complexity</title>
-<meta name="description" content="OmniStepBench is a workload- and deployment-aware benchmark for evaluating models as agents: 233 tasks from 22 source benchmarks in a 2×3 workload matrix, one shared OpenClaw runtime with task contracts, and an evidence-based audit of LLM-judge scores.">
+<meta name="description" content="OmniStepBench is a benchmark for deployment-aware agent evaluation across modalities and task complexity: 233 tasks from 22 source benchmarks in a 2×3 workload matrix, one shared OpenClaw runtime with task contracts, and an evidence-based audit of LLM-judge scores.">
 <meta name="author" content="Yu Liu, Zhilin Liu, Zhiwei Yang, Shaojie Zhang, Zheyuan Deng, Tingwei Huang, Zhenbo Luo, Lei Jiang, Yanbing Liu, Pei Fu">
 
 <!-- Open Graph / social cards (absolute URLs for the GitHub Pages deployment at https://seerray-lab.github.io/OmniStepBench/). -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="OmniStepBench">
 <meta property="og:title" content="OmniStepBench: Deployment-Aware Agent Evaluation across Modalities and Task Complexity">
-<meta property="og:description" content="A workload- and deployment-aware benchmark for evaluating models as agents. No single model dominates all workload groups.">
+<meta property="og:description" content="A benchmark for deployment-aware agent evaluation across modalities and task complexity. No model dominates all six workload groups.">
 <meta property="og:image" content="https://seerray-lab.github.io/OmniStepBench/assets/img/social-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="OmniStepBench project card with the lobster evaluator mascot">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="OmniStepBench: Deployment-Aware Agent Evaluation across Modalities and Task Complexity">
-<meta name="twitter:description" content="A workload- and deployment-aware benchmark for evaluating models as agents.">
+<meta name="twitter:description" content="A benchmark for deployment-aware agent evaluation across modalities and task complexity.">
 <meta name="twitter:image" content="https://seerray-lab.github.io/OmniStepBench/assets/img/social-card.png">
 
 <!-- Google Scholar -->
@@ -550,9 +550,9 @@
         <span class="pill pill--glass" id="hero-arxiv"></span>
         <button class="motion-toggle" type="button" id="motion-toggle" aria-pressed="false"><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><span>Pause animations</span></button>
       </div>
-      <h1 id="hero-title" class="wordmark" aria-label="OmniStepBench"><span class="wordmark__a" aria-hidden="true">OmniStep</span><span class="wordmark__b" aria-hidden="true">Bench</span></h1>
+      <h1 id="hero-title" class="wordmark" aria-label="OmniStepBench"><span class="wordmark__a" aria-hidden="true">OmniStep</span><wbr><span class="wordmark__b" aria-hidden="true">Bench</span></h1>
       <p class="hero__expansion" data-bind="meta.expansion">Deployment-Aware Agent Evaluation across Modalities and Task Complexity</p>
-      <p class="hero__tagline" data-bind="meta.taglines.0">A workload- and deployment-aware benchmark for evaluating models as agents.</p>
+      <p class="hero__tagline" data-bind="meta.taglines.2">No model dominates all six workload groups.</p>
       <ul class="authors" id="authors" aria-label="Authors"><li>Yu Liu,</li><li>Zhilin Liu,</li><li>Zhiwei Yang,</li><li>Shaojie Zhang,</li><li>Zheyuan Deng,</li><li>Tingwei Huang,</li><li>Zhenbo Luo,</li><li>Lei Jiang,</li><li>Yanbing Liu,</li><li>Pei Fu</li></ul>
       <ol class="affils" id="affils" aria-label="Affiliations"><li>Institute of Information Engineering, Chinese Academy of Sciences</li><li>School of Cyber Security, University of Chinese Academy of Sciences</li><li>MiLM Plus, Xiaomi Inc.</li><li>Department of Computer Science, Brown University</li></ol>
       <p class="author-notes" id="author-notes"></p>
@@ -760,7 +760,7 @@
     </div>
     <figure class="figure-frame card card--blob">
       <button class="zoomable" type="button" id="overview-zoom" aria-label="Enlarge Figure 2: overview of OmniStepBench">
-        <img id="overview-img" alt="" width="1259" height="532" decoding="async">
+        <img id="overview-img" alt="" width="2157" height="944" decoding="async">
         <span class="zoomable__hint"><svg aria-hidden="true"><use href="#i-zoom"/></svg><span class="lg-only">Click to enlarge</span><span class="sm-only">Tap to enlarge and pan</span></span>
       </button>
       <figcaption id="overview-cap"></figcaption>
@@ -793,7 +793,9 @@
           <h3 id="sources-title">Source benchmarks</h3>
           <p class="card-sub" id="sources-sub"></p>
         </div>
-        <button class="btn btn--sm btn--ghost view-toggle" type="button" data-target="sources"><svg aria-hidden="true"><use href="#i-table"/></svg><span>View as table</span></button>
+        <div class="card-head__btns" id="sources-btns">
+          <button class="btn btn--sm btn--ghost view-toggle" type="button" data-target="sources"><svg aria-hidden="true"><use href="#i-table"/></svg><span>View as table</span></button>
+        </div>
       </div>
       <div class="view view--chart" id="sources-chart">
         <div class="legend" id="sources-legend"></div>
@@ -833,7 +835,7 @@
     <div class="sec-head">
       <div class="sec-head__text">
         <p class="kicker">Leaderboard</p>
-        <h2 id="leaderboard-title">No single model <span class="squiggle">dominates</span> all workload groups</h2>
+        <h2 id="leaderboard-title">No model <span class="squiggle">dominates</span> all six workload groups</h2>
         <p class="lead" id="lb-lead"></p>
       </div>
     </div>
@@ -975,7 +977,7 @@
       <div class="sec-head__text">
         <p class="kicker">Key findings</p>
         <h2 id="findings-title">What the results say about <span class="squiggle">choosing</span> an agent model</h2>
-        <p class="lead" data-bind="meta.taglines.3">Model selection should consider workload profiles, deployment mode, and accuracy–cost trade-offs rather than a single aggregate score.</p>
+        <p class="lead" data-bind="meta.taglines.3">Deployment decisions should rest on workload profiles, deployment mode, and accuracy–cost trade-offs rather than a single aggregate score.</p>
       </div>
       <svg class="sec-head__art" aria-hidden="true"><use href="#ic-scale"/></svg>
     </div>

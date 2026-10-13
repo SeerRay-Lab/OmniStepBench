@@ -8,7 +8,8 @@
 
   /* ---------------- hero ---------------- */
   function hero() {
-    U.$('#hero-arxiv').textContent = 'arXiv:' + M.arxivId + ' · ' + M.arxivCategory + ' · ' + M.arxivDate;
+    var pill = U.$('#hero-arxiv');
+    pill.textContent = 'arXiv:' + M.arxivId + ' · ' + M.arxivCategory + ' · ' + M.arxivDate;
 
     var ul = U.$('#authors');
     ul.textContent = ''; /* replace the static no-JS fallback */
@@ -60,7 +61,7 @@
           h('span', { class: 'why__art' }, U.icon(a[0])),
           h('h3', { class: 'why__q' }, h('span', { class: 'why__word', text: word }), w.question)),
         h('p', { class: 'why__problem', text: w.problem }),
-        h('p', { class: 'why__answer' }, h('strong', { text: 'OmniStepBench’s answer' }), w.answer)));
+        h('p', { class: 'why__answer' }, h('strong', { text: M.shortName + '’s answer' }), w.answer)));
     });
     var tl = U.$('#tldr-list');
     [M.taglines[1], M.taglines[2], M.taglines[3]].forEach(function (t) { tl.appendChild(h('li', { text: t })); });
@@ -112,9 +113,10 @@
       'judge-hallucination': { icon: 'i-eye', cls: 'fi-purple', jump: '#reliability', jl: 'Inside the audit' },
       'deployment-failures': { icon: 'i-loop', cls: 'fi-purple', jump: '#pattern-grid', jl: 'Hallucination patterns' },
       'model-evolution': { icon: 'i-sprout', cls: 'fi-green', jump: '#leaderboard', jl: 'Show local models in the leaderboard', lb: { deploy: 'local', track: 'full' } },
+      'local-tokens': { icon: 'i-token', cls: 'fi-green', jump: '#taxonomy', jl: 'PPPA in the failure taxonomy' },
       'failure-taxonomy': { icon: 'i-compass', cls: 'fi-blue', jump: '#taxonomy', jl: 'Failure taxonomy' }
     };
-    var order = ['workload-winners', 'open-weight-gap', 'pareto', 'tokens-vs-dollars', 'judge-hallucination', 'deployment-failures', 'model-evolution', 'failure-taxonomy'];
+    var order = ['workload-winners', 'open-weight-gap', 'pareto', 'tokens-vs-dollars', 'local-tokens', 'judge-hallucination', 'deployment-failures', 'model-evolution', 'failure-taxonomy'];
     var grid = U.$('#findings-grid');
     order.forEach(function (key, idx) {
       var f = finding(key);
@@ -166,44 +168,64 @@
     });
     return box;
   }
-  /* open-weight gap: the two local Overall values the paper states, plus its "~15 points" */
+  /* deployment gap: for each tool-mediated group the paper compares (§4.2), the best local score
+     next to the best API score it states */
   function gapVisual(f) {
-    var nums = f.numbers.filter(function (n) { return n.model; });
-    var gap = f.numbers.filter(function (n) { return n.gapPoints != null; })[0];
-    var box = h('div', { class: 'mini-bars' });
-    var bars = [];
-    nums.forEach(function (n) {
-      var m = U.model(n.model);
-      var bar = h('div', { class: 'mini-bar', attrs: { role: 'img', 'aria-label': n.model + ': Overall ' + U.pct(n.overall) + ' percent (local model, stated in ' + f.section + ')' } },
-        h('span', { class: 'mini-bar__n', text: n.model, attrs: { 'aria-hidden': 'true' } }),
-        h('span', { class: 'mini-bar__t', attrs: { 'aria-hidden': 'true' } }, h('span', { class: 'mini-bar__f', style: { width: n.overall + '%', background: 'var(--series-local)' } })),
-        h('span', { class: 'mini-bar__v', text: U.pct(n.overall), attrs: { 'aria-hidden': 'true' } }));
-      U.hoverTip(bar, function () {
-        return { title: n.model, rows: [{ label: 'Overall accuracy', value: U.pct(n.overall) + '%', color: U.css('--series-local') }],
-          note: (m ? m.vendor + ' · ' : '') + 'Local · stated in the paper (' + f.section + ')' };
-      });
-      bars.push(bar);
-      box.appendChild(bar);
+    var groups = [], by = {};
+    f.numbers.forEach(function (n) {
+      if (!n.group || n.acc == null) return;
+      if (!by[n.group]) { by[n.group] = []; groups.push(n.group); }
+      by[n.group].push(n);
     });
+    var box = h('div', { class: 'mini-bars mini-bars--gap' });
+    var bars = [];
+    groups.forEach(function (key) {
+      var g = U.group(key);
+      box.appendChild(h('p', { class: 'mini-bars__h', text: g.longLabel }));
+      by[key].forEach(function (n) {
+        var m = U.model(n.model), dep = m && m.deployment === 'local' ? 'local' : 'api', depLab = dep === 'local' ? 'Local' : 'API';
+        var bar = h('div', { class: 'mini-bar', attrs: { role: 'img', 'aria-label': n.model + ' (' + depLab + '): ' + g.label + ' ' + U.pct(n.acc) + ' percent (stated in ' + f.section + ')' } },
+          h('span', { class: 'mini-bar__n', text: m ? m.shortName : n.model, attrs: { 'aria-hidden': 'true' } }),
+          h('span', { class: 'mini-bar__t', attrs: { 'aria-hidden': 'true' } }, h('span', { class: 'mini-bar__f', style: { width: n.acc + '%', background: 'var(--series-' + dep + ')' } })),
+          h('span', { class: 'mini-bar__v', text: U.pct(n.acc), attrs: { 'aria-hidden': 'true' } }));
+        U.hoverTip(bar, function () {
+          return { title: n.model, rows: [{ label: g.longLabel + ' accuracy', value: U.pct(n.acc) + '%', color: U.css('--series-' + dep) }],
+            note: (m ? m.vendor + ' · ' : '') + depLab + ' · stated in the paper (' + f.section + ')' };
+        });
+        bars.push(bar);
+        box.appendChild(bar);
+      });
+    });
+    if (!bars.length) return h('span');
     U.roving(bars);
-    var wrap = h('div', { class: 'mini-wrap' }, box);
-    if (gap) wrap.appendChild(h('p', { class: 'scribble scribble--tilt', text: '~' + gap.gapPoints + ' pt gap to frontier commercial models' }));
-    return wrap;
+    var legend = h('div', { class: 'legend mini-legend' });
+    [['var(--series-local)', 'best local'], ['var(--series-api)', 'best API']].forEach(function (x) {
+      legend.appendChild(h('span', { class: 'legend__item' }, h('span', { class: 'legend__sw', style: { background: x[0] } }), x[1]));
+    });
+    return h('div', { class: 'mini-wrap' }, legend, box);
   }
-  /* tokens vs dollars: MiMo-V2.5 vs Claude-Opus-4.6 overall (numbers stated in §4.2) */
+  /* token use vs dollars: the four extremes the paper names in §4.2 (Text Avg per task) are four
+     different models */
   function chainVisual(f) {
-    var a = f.numbers.filter(function (n) { return n.overallTokensK != null; });
-    if (a.length < 2) return h('span');
-    var ratio = a[1].ratioApprox;
-    function chip(n) {
-      return h('div', { class: 'vs-chip' }, h('b', { text: n.model }), h('span', { class: 'vs-chip__big', text: n.overallTokensK + 'k tokens' }), h('span', { text: '$' + n.overallCost.toFixed(3) + ' per task (Overall)' }));
+    function ext(field, max) {
+      var xs = f.numbers.filter(function (n) { return n[field] != null; });
+      return xs.sort(function (a, b) { return max ? b[field] - a[field] : a[field] - b[field]; })[0];
     }
-    return h('div', { class: 'vs' }, chip(a[0]), h('span', { class: 'vs__mid' }, h('span', { class: 'scribble', text: '~' + ratio + '× the cost' }), U.icon('i-arrow')), chip(a[1]));
+    var cells = [['fewest tokens', ext('tokensText'), function (n) { return U.tok(n.tokensText); }],
+      ['most tokens', ext('tokensText', true), function (n) { return U.tok(n.tokensText); }],
+      ['cheapest', ext('costText'), function (n) { return '$' + n.costText.toFixed(3); }],
+      ['most expensive', ext('costText', true), function (n) { return '$' + n.costText.toFixed(3); }]];
+    if (cells.some(function (c) { return !c[1]; })) return h('span');
+    var list = h('ul', { class: 'xchips' });
+    cells.forEach(function (c) {
+      list.appendChild(h('li', { class: 'vs-chip' }, h('span', { class: 'xchips__k', text: c[0] }), h('b', { text: c[1].model }), h('span', { class: 'vs-chip__big', text: c[2](c[1]) })));
+    });
+    return h('div', { class: 'mini-wrap' }, list, h('p', { class: 'xchips__note', text: 'Text Avg, per task' }));
   }
 
   /* judge hallucination: the audit counts and the MAE change, as stated in §4.3 / Appendix C */
   function auditVisual(f) {
-    var n = f.numbers;
+    var n = Array.isArray(f.numbers) ? f.numbers[0] : f.numbers;
     var steps = [[U.int(n.judgeCalls), 'judge calls'], [U.int(n.flagged), 'flagged'], [U.int(n.confirmed), 'removed']];
     var row = h('div', { class: 'mini-funnel', attrs: { role: 'img', 'aria-label': steps.map(function (x) { return x[0] + ' ' + x[1]; }).join(', then ') } });
     steps.forEach(function (x, i) {
@@ -248,21 +270,21 @@
         h('a', { class: 'btn btn--sm btn--ghost', attrs: { href: M.pdfUrl, rel: 'noopener' } }, U.icon('i-pdf'), 'PDF')),
       h('span', { class: 'btn-pair' },
         h('a', { class: 'btn btn--sm btn--ghost', attrs: { href: M.github, rel: 'noopener' } }, U.icon('i-github'), 'Code'),
-        M.hfDataset ? h('a', { class: 'btn btn--sm btn--ghost', attrs: { href: M.hfDataset, rel: 'noopener', title: 'OmniStepBench on Hugging Face' } }, U.icon('i-data'), 'HF Dataset') : null));
+        M.hfDataset ? h('a', { class: 'btn btn--sm btn--ghost', attrs: { href: M.hfDataset, rel: 'noopener', title: M.shortName + ' on Hugging Face' } }, U.icon('i-data'), 'HF Dataset') : null));
     U.$('.cite__body').appendChild(links);
     U.$$('[data-copy-target]').forEach(function (b) {
       b.addEventListener('click', function () { U.copy(document.getElementById(b.getAttribute('data-copy-target')).textContent, b); });
     });
     var fa = U.$('#footer-affils');
     M.affiliations.forEach(function (a) { fa.appendChild(h('li', { text: a.name, attrs: { value: String(a.id) } })); });
-    U.$('#footer-ack').textContent = 'OmniStepBench runs every model in the OpenClaw agent runtime (version ' + S.runtime.openclaw + ' in the paper). Its ' + U.int(S.tasks) + ' tasks are selected and adapted from ' + U.int(S.sources) + ' public source benchmarks, and we gratefully acknowledge their authors:';
+    U.$('#footer-ack').textContent = M.shortName + ' runs every model in the OpenClaw agent runtime (version ' + S.runtime.openclaw + ' in the paper). Its ' + U.int(S.tasks) + ' tasks are selected and adapted from ' + U.int(S.sources) + ' public source benchmarks, and we gratefully acknowledge their authors:';
     var fs = U.$('#footer-srcs');
     fs.textContent = '';
     D.sources.forEach(function (s, i) {
       fs.appendChild(h('span', { class: 'src-i', text: s.name + (i < D.sources.length - 1 ? ' ·' : '') }));
       if (i < D.sources.length - 1) fs.appendChild(document.createTextNode(' '));
     });
-    U.$('#footer-base').textContent = 'All numbers on this page follow the arXiv paper (' + M.arxivId + M.arxivVersion + '). Illustrations are original; figures are reproduced from the paper.';
+    U.$('#footer-base').textContent = 'All numbers on this page follow the ' + M.shortName + ' paper. Illustrations are original; figures are reproduced from the paper.';
   }
 
   U.initContent = function () { hero(); why(); overview(); findings(); caseStudy(); cite(); };

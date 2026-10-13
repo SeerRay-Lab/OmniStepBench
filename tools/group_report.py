@@ -112,7 +112,7 @@ def load_results(paths):
         with open(f, encoding="utf-8") as fh:
             d = json.load(fh)
         if "tasks" not in d:
-            print(f"skipping {f}: not a OmniStepBench result JSON", file=sys.stderr)
+            print(f"skipping {f}: not an OmniStepBench result JSON", file=sys.stderr)
             continue
         d["_path"] = str(f)
         docs.append(d)

@@ -26,7 +26,7 @@
 
   function lead() {
     var w = D.meta.why.filter(function (x) { return x.key === 'trustworthy'; })[0];
-    U.$('#rel-lead').textContent = w.problem + ' OmniStepBench applies deterministic post-hoc rules to every score that involves the primary judge; flagged cases go to a meta-judge from a different model family, which decides whether the execution evidence supports the awarded positive score.';
+    U.$('#rel-lead').textContent = w.problem + ' ' + D.meta.shortName + ' applies deterministic post-hoc rules to every score that involves the primary judge; flagged cases go to a meta-judge from a different model family, which decides whether the execution evidence supports the awarded positive score.';
   }
 
   /* Audit funnel as step cards: every number is printed, no bars (the stages differ by
@@ -76,7 +76,9 @@
       h('div', { class: 'mae__tile' }, h('div', { class: 'mae__v', text: A.mae.primaryJudge.toFixed(3) }), h('div', { class: 'mae__l', text: 'MAE, primary judge' })),
       h('div', { class: 'mae__mid' }, h('span', { class: 'scribble scribble--sm', text: 'about half' }), U.icon('i-arrow', 'mae__arrow')),
       h('div', { class: 'mae__tile mae__tile--after' }, h('div', { class: 'mae__v', text: A.mae.afterMetaJudge.toFixed(3) }), h('div', { class: 'mae__l', text: 'MAE, after meta-judge' }))));
-    mae.appendChild(h('p', { class: 'mae__cap', text: A.mae.definition.replace(/\.$/, '') + ' (n = ' + A.mae.n + '). Lower is better; the paper notes the corrected error is approximately half that of the primary judge (Appendix C).' }));
+    /* the sample size goes in brackets only when the definition does not already state it */
+    var def = A.mae.definition.replace(/\.$/, ''), nTxt = String(A.mae.n);
+    mae.appendChild(h('p', { class: 'mae__cap', text: def + (new RegExp('\\b' + nTxt + '\\b').test(def) ? '.' : ' (n = ' + nTxt + ').') + ' Lower is better; the paper notes the corrected error is approximately half that of the primary judge (Appendix C).' }));
   }
 
   function patterns() {

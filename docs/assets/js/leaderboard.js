@@ -1,4 +1,4 @@
-/* Interactive leaderboard: paper Table 1 (audited accuracy), all 35 models.
+/* Interactive leaderboard: paper Table 1 (audited accuracy), every model in data.js.
    Column order follows Table 1 (Text groups, Text Avg, MM groups, MM Avg) plus Overall (Eq. 11). */
 (function () {
   'use strict';
