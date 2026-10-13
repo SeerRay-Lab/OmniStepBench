@@ -40,5 +40,5 @@ Third-party data: source benchmarks
 The 233 tasks in tasks/ and their workspace files in assets/ are selected and
 adapted from 22 publicly available benchmarks (listed in Table 9 of the OmniStepBench
 paper, arXiv:2609.06059). Those items remain subject to the licenses and terms of
-use of their original benchmarks. A per-source table is available at
-https://huggingface.co/datasets/SeerRay-Lab/OmniStepBench/blob/main/LICENSE.md
+use of their original benchmarks. The per-source licence table is in DATA_LICENSES.md
+(also at https://huggingface.co/datasets/SeerRay-Lab/OmniStepBench/blob/main/LICENSE.md).

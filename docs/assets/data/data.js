@@ -19,12 +19,11 @@ window.OSB = {
       "Abstract"
     ],
     "arxivId": "2609.06059",
-    "arxivVersion": "v1",
     "arxivCategory": "cs.AI",
     "arxivDate": "5 Sep 2026",
     "arxivUrl": "https://arxiv.org/abs/2609.06059",
     "pdfUrl": "https://arxiv.org/pdf/2609.06059",
-    "htmlUrl": "https://arxiv.org/html/2609.06059v1",
+    "htmlUrl": "https://arxiv.org/html/2609.06059",
     "github": "https://github.com/SeerRay-Lab/OmniStepBench",
     "hfDataset": "https://huggingface.co/datasets/SeerRay-Lab/OmniStepBench",
     "authors": [
@@ -6168,7 +6167,6 @@ window.OSB = {
         "caption": "Accuracy trajectories of locally deployed open-weight Qwen and Gemma series across the six task groups. Thin lines denote per-group accuracies; the bold red line and shading denote Overall, computed from the displayed Text and multimodal averages with task-count weights 162 and 71.",
         "alt": "Line chart of per-group and Overall accuracy for locally deployed Qwen and Gemma models ordered by generation and size.",
         "taskId": null,
-        "provenance": "Not in the arXiv HTML asset set (SVG); rasterised from paper.pdf page 12 at 300 dpi.",
         "caution": "Fig. 4 labels Qwen3-VL-8B = 40.2 and Qwen2.5-VL-32B = 38.9, whereas §B.1 prose (and the page leaderboard) use 40.3 and 39.0. Avoid placing this figure next to the leaderboard."
       },
       {
@@ -6187,8 +6185,7 @@ window.OSB = {
         "file": "img/casestudy_rubric_leakage.png",
         "caption": "Judge hallucination example B (rubric leakage). Task: Read the table. Can you identify any locations within the table whose area or population values significantly deviate from the patterns observed in other locations? The model fails and answers “No anomalies are detected,” yet the LLM judge mistakes the reference answer embedded in the grading rubric for the agent’s response and incorrectly scores the trajectory as correct.",
         "alt": "Judge hallucination example B: Qwen2.5-VL-7B answers that no anomalies are detected, yet the LLM judge treats the rubric reference answer as the model response.",
-        "taskId": "task_tablebench_10",
-        "provenance": "HTML embeds an SVG not copied locally; rasterised from paper.pdf page 14 at 300 dpi."
+        "taskId": "task_tablebench_10"
       },
       {
         "key": "fig-sunburst",
@@ -9296,7 +9293,7 @@ window.OSB = {
       "Table 1: 42 rows (30 API + 12 local)",
       "Table 1 Text/MM averages = task-count-weighted group values (within rounding; 12 rounding-level notes)",
       "Table 2 Text/MM averages == appendix API tables (30 models)",
-      "Table 3 audit patterns unchanged (124 local / 19 API / 143)"
+      "Table 3 audit patterns: 124 local / 19 API / 143"
     ],
     "roundingNotes": [
       "Claude-Opus-4.8 MM Avg: 71.1 vs 71.05 (rounding of the group values)",
@@ -9313,8 +9310,6 @@ window.OSB = {
       "Qwen3-Coder-30B-A3B-Instruct Text Avg: 52.1 vs 52.16 (rounding of the group values)"
     ],
     "builtBy": "homepage/tools/data_build/build_data_tex.py",
-    "vendorNote": "Vendor labels follow the paper's own naming (citations / Table 9 providers): GLM models -> 'Z.ai' (Zhipu), Doubao -> 'ByteDance', Kimi -> 'Moonshot AI', Gemma and Gemini -> 'Google'. 10 API families as stated in §4.1.",
-    "pdfCrossCheck": "Tables 1, 2, 3, 5, 6, 7, 8, 9 re-read from pdftotext -layout output and matched cell-by-cell (HTML == PDF).",
-    "figureExtraction": "Fig. 4 (series_evolution.png) and Fig. 6 (casestudy_rubric_leakage.png) rasterised from paper.pdf at 300 dpi because the HTML uses SVGs not present locally."
+    "vendorNote": "Vendor labels follow the paper's own naming (citations / Table 9 providers): GLM models -> 'Z.ai' (Zhipu), Doubao -> 'ByteDance', Kimi -> 'Moonshot AI', Gemma and Gemini -> 'Google'. 10 API families as stated in §4.1."
   }
 };

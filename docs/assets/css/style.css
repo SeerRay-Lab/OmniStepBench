@@ -40,6 +40,8 @@
   --link: #0E5A8A;             /* 7.0 cream / 6.6 sea */
   --kicker: #B93D27;           /* = --lobster-ink, 5.3 cream / 5.0 sea */
   --gold: #F2B84B;
+  --amber: #F0A01E;            /* "Step" of the hero wordmark (white outline) */
+  --amber-ink: #A86400;        /* "Step" on cream (nav, footer): 4.4 cream */
 
   /* Scoring modes: ordinal slate ramp auto -> hybrid -> judge
      (increasing reliance on the LLM judge). validate_palette --ordinal:
@@ -153,6 +155,7 @@ code, pre, kbd { font-family: var(--font-mono); }
 .nav__logo { width: 38px; height: 38px; }
 .nav__word { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; }
 .nav__word span { color: var(--kicker); }
+.nav__word .nav__s { color: var(--amber-ink); }
 .nav__menu { display: flex; align-items: center; gap: 18px; margin-left: auto; }
 .nav__links { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
 .nav__links a {
@@ -1027,12 +1030,13 @@ th[aria-sort="descending"] .sort-btn .arr, th[aria-sort="ascending"] .sort-btn .
 
 /* ---- hero polish ---- */
 .wordmark { color: var(--navy); }
-.wordmark__a, .wordmark__b {
+.wordmark__a, .wordmark__s, .wordmark__b {
   text-shadow:
     -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff,
     0 -3px 0 #fff, 0 3px 0 #fff, -3px 0 0 #fff, 3px 0 0 #fff,
     3px 7px 0 #1E3450;
 }
+.wordmark__s { color: var(--amber); }
 .wordmark__b { color: var(--coral); }
 .hero__gull { position: absolute; top: 44px; left: 33%; width: 42px; height: 17px; }
 .hero__fish--c { top: 39%; left: 92%; width: 36px; height: 25px; transform: scaleX(-1); }
@@ -1642,11 +1646,10 @@ th[aria-sort="descending"] .sort-btn .arr, th[aria-sort="ascending"] .sort-btn .
    leaves one button alone on a row (homepage/tools/add_hf_links.py) */
 .btn-pair { display: flex; gap: inherit; }
 
-/* ---- OmniStepBench: longer wordmark, continuity note, 42-model findings ---- */
-/* "OmniStepBench" is about 6.8 em wide: one line in the copy column from 361 px up (the <wbr> between
-   the two halves lets it break cleanly only if a viewport is narrower still) */
+/* ---- OmniStepBench: longer wordmark, 42-model findings ---- */
+/* "OmniStepBench" is about 6.8 em wide: one line in the copy column from 361 px up (the <wbr> before
+   "Bench" lets it break cleanly only if a viewport is narrower still) */
 @media (max-width: 560px) { .wordmark { font-size: min(56px, 12.4vw); } }
-.hero__former { font-size: 13.5px; font-weight: 700; color: var(--ink-2); }
 /* the longer subtitle: two lines ("… Agent Evaluation / across … Task Complexity") from 390 px up, balanced below */
 .hero__expansion { max-width: 36ch; text-wrap: balance; }
 .hero__tagline { text-wrap: balance; }
