@@ -322,7 +322,7 @@ window.OSB = {
       },
       "sources": [
         "simplevqa",
-        "hle"
+        "charxiv"
       ],
       "applicableModels": 34,
       "best": {
@@ -344,7 +344,7 @@ window.OSB = {
         "hybrid": 0
       },
       "sources": [
-        "charxiv",
+        "hle",
         "medxpertqa"
       ],
       "applicableModels": 34,
@@ -844,11 +844,40 @@ window.OSB = {
       "repoWithImage": 10
     },
     {
+      "key": "charxiv",
+      "name": "CharXiv",
+      "capability": "Academic figure and chart understanding",
+      "count": 10,
+      "group": "mm-ss",
+      "scoring": "Judge",
+      "scoringModes": {
+        "auto": 0,
+        "judge": 10,
+        "hybrid": 0
+      },
+      "fullName": "CharXiv",
+      "description": "CharXiv is a chart-understanding benchmark built from real arXiv figures; it asks questions that require reading legends, curves, axes, and annotations, testing fine-grained visual reasoning beyond simple OCR or caption matching.",
+      "citation": {
+        "text": "Wang et al. 2024",
+        "title": "CharXiv: charting gaps in realistic chart understanding in multimodal llms",
+        "authors": "Z. Wang, M. Xia, L. He, H. Chen, Y. Liu, R. Zhu, K. Liang, X. Wu, H. Liu, S. Malladi, et al.",
+        "venue": "arXiv preprint arXiv:2406.18521",
+        "url": null
+      },
+      "repoCount": 10,
+      "repoScoring": {
+        "auto": 0,
+        "judge": 10,
+        "hybrid": 0
+      },
+      "repoWithImage": 10
+    },
+    {
       "key": "hle",
       "name": "HLE",
       "capability": "Humanity’s Last Exam (cross-discipline)",
       "count": 10,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge",
       "scoringModes": {
         "auto": 0,
@@ -872,35 +901,6 @@ window.OSB = {
         "hybrid": 0
       },
       "repoWithImage": 2
-    },
-    {
-      "key": "charxiv",
-      "name": "CharXiv",
-      "capability": "Academic figure and chart understanding",
-      "count": 10,
-      "group": "mm-ms",
-      "scoring": "Judge",
-      "scoringModes": {
-        "auto": 0,
-        "judge": 10,
-        "hybrid": 0
-      },
-      "fullName": "CharXiv",
-      "description": "CharXiv is a chart-understanding benchmark built from real arXiv figures; it asks questions that require reading legends, curves, axes, and annotations, testing fine-grained visual reasoning beyond simple OCR or caption matching.",
-      "citation": {
-        "text": "Wang et al. 2024",
-        "title": "CharXiv: charting gaps in realistic chart understanding in multimodal llms",
-        "authors": "Z. Wang, M. Xia, L. He, H. Chen, Y. Liu, R. Zhu, K. Liang, X. Wu, H. Liu, S. Malladi, et al.",
-        "venue": "arXiv preprint arXiv:2406.18521",
-        "url": null
-      },
-      "repoCount": 10,
-      "repoScoring": {
-        "auto": 0,
-        "judge": 10,
-        "hybrid": 0
-      },
-      "repoWithImage": 10
     },
     {
       "key": "medxpertqa",
@@ -6215,7 +6215,7 @@ window.OSB = {
         "key": "case2",
         "label": "Appendix D, Case 2",
         "title": "Academic Diagram Understanding",
-        "boxTitle": "Case 2: Academic Diagram Understanding (Multi-Modal Multi-Step)",
+        "boxTitle": "Case 2: Academic Diagram Understanding (Multi-Modal Single-Step)",
         "task": "What is the name of the line that is the furthest away from its fi value from the W-H axis?",
         "taskId": "task_charxiv_01",
         "file": "img/charxiv_01.png",
@@ -6817,7 +6817,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 300,
       "hasImage": true,
-      "group": "mm-ms",
+      "group": "mm-ss",
       "scoring": "Judge"
     },
     {
@@ -6828,7 +6828,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 300,
       "hasImage": true,
-      "group": "mm-ms",
+      "group": "mm-ss",
       "scoring": "Judge"
     },
     {
@@ -6839,7 +6839,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 300,
       "hasImage": true,
-      "group": "mm-ms",
+      "group": "mm-ss",
       "scoring": "Judge"
     },
     {
@@ -6850,7 +6850,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 300,
       "hasImage": true,
-      "group": "mm-ms",
+      "group": "mm-ss",
       "scoring": "Judge"
     },
     {
@@ -6861,7 +6861,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 300,
       "hasImage": true,
-      "group": "mm-ms",
+      "group": "mm-ss",
       "scoring": "Judge"
     },
     {
@@ -6872,7 +6872,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 300,
       "hasImage": true,
-      "group": "mm-ms",
+      "group": "mm-ss",
       "scoring": "Judge"
     },
     {
@@ -6883,7 +6883,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 300,
       "hasImage": true,
-      "group": "mm-ms",
+      "group": "mm-ss",
       "scoring": "Judge"
     },
     {
@@ -6894,7 +6894,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 300,
       "hasImage": true,
-      "group": "mm-ms",
+      "group": "mm-ss",
       "scoring": "Judge"
     },
     {
@@ -6905,7 +6905,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 300,
       "hasImage": true,
-      "group": "mm-ms",
+      "group": "mm-ss",
       "scoring": "Judge"
     },
     {
@@ -6916,7 +6916,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 300,
       "hasImage": true,
-      "group": "mm-ms",
+      "group": "mm-ss",
       "scoring": "Judge"
     },
     {
@@ -7257,7 +7257,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 480,
       "hasImage": false,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge"
     },
     {
@@ -7268,7 +7268,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 480,
       "hasImage": false,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge"
     },
     {
@@ -7279,7 +7279,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 480,
       "hasImage": true,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge"
     },
     {
@@ -7290,7 +7290,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 480,
       "hasImage": false,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge"
     },
     {
@@ -7301,7 +7301,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 480,
       "hasImage": false,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge"
     },
     {
@@ -7312,7 +7312,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 480,
       "hasImage": false,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge"
     },
     {
@@ -7323,7 +7323,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 480,
       "hasImage": false,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge"
     },
     {
@@ -7334,7 +7334,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 480,
       "hasImage": true,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge"
     },
     {
@@ -7345,7 +7345,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 480,
       "hasImage": false,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge"
     },
     {
@@ -7356,7 +7356,7 @@ window.OSB = {
       "level": null,
       "timeoutSeconds": 480,
       "hasImage": false,
-      "group": "mm-ss",
+      "group": "mm-ms",
       "scoring": "Judge"
     },
     {
@@ -9149,25 +9149,23 @@ window.OSB = {
     },
     {
       "group": "mm-ss",
-      "id": "task_hle_02",
-      "source": "hle",
-      "sourceName": "HLE",
-      "title": "HLE Sample 2 (Other)",
-      "promptExcerpt": "An image is provided in the file 'image.jpg' in your workspace.\n\nQuestion: Along which plate boundary might we expect the longest range of the tallest mountains on the planet shown above? Assume similar tectonic plate geology to Earth.\n\nAnswer Choices:\nA. Kihei Plate and South Avalonia Plate\nB. South Avalonia Plate and South Kesh Plate\n…",
+      "id": "task_charxiv_01",
+      "source": "charxiv",
+      "sourceName": "CharXiv",
+      "title": "CharXiv - Cs Chart (20)",
+      "promptExcerpt": "You are given an academic chart/image from an arXiv paper. Please analyze the chart and answer the question.\n\n### Question\nWhat is the name of the line that is the furthest away from its fi value from the W_H axis?",
       "excerptNote": "Excerpt of the task prompt; harness boilerplate (tool note, time budget) trimmed. The excerpt stops before the answer; no reference answer or rubric is included.",
       "hasImage": true,
-      "imageFile": "img/examples/task_hle_02.png",
-      "repoAsset": "hle/hle_02_image.jpg",
+      "imageFile": "img/examples/task_charxiv_01.jpg",
+      "repoAsset": "charxiv/1.jpg",
       "extraImages": 0,
       "artifact": "answer.txt",
-      "timeoutSeconds": 480,
+      "timeoutSeconds": 300,
       "scoring": "Judge",
-      "paperRef": "Same task as Appendix D, Case 5",
-      "imageNote": "repo file hle/hle_02_image.jpg is actually PNG data; copied byte-for-byte with a .png extension",
-      "optionsCount": 9,
-      "imageWidth": 1159,
-      "imageHeight": 642,
-      "imageAlt": "Hypothetical tectonic plate map of a fictional planet with named plates (task input image)."
+      "paperRef": "Same task as Appendix D, Case 2",
+      "imageWidth": 1024,
+      "imageHeight": 760,
+      "imageAlt": "Scatter/line chart from an arXiv paper plotting W_L against W_H for three lambda_L settings, with markers ap, sm, fi and ni (task input image)."
     },
     {
       "group": "mm-ss",
@@ -9193,23 +9191,25 @@ window.OSB = {
     },
     {
       "group": "mm-ms",
-      "id": "task_charxiv_01",
-      "source": "charxiv",
-      "sourceName": "CharXiv",
-      "title": "CharXiv - Cs Chart (20)",
-      "promptExcerpt": "You are given an academic chart/image from an arXiv paper. Please analyze the chart and answer the question.\n\n### Question\nWhat is the name of the line that is the furthest away from its fi value from the W_H axis?",
+      "id": "task_hle_02",
+      "source": "hle",
+      "sourceName": "HLE",
+      "title": "HLE Sample 2 (Other)",
+      "promptExcerpt": "An image is provided in the file 'image.jpg' in your workspace.\n\nQuestion: Along which plate boundary might we expect the longest range of the tallest mountains on the planet shown above? Assume similar tectonic plate geology to Earth.\n\nAnswer Choices:\nA. Kihei Plate and South Avalonia Plate\nB. South Avalonia Plate and South Kesh Plate\n…",
       "excerptNote": "Excerpt of the task prompt; harness boilerplate (tool note, time budget) trimmed. The excerpt stops before the answer; no reference answer or rubric is included.",
       "hasImage": true,
-      "imageFile": "img/examples/task_charxiv_01.jpg",
-      "repoAsset": "charxiv/1.jpg",
+      "imageFile": "img/examples/task_hle_02.png",
+      "repoAsset": "hle/hle_02_image.jpg",
       "extraImages": 0,
       "artifact": "answer.txt",
-      "timeoutSeconds": 300,
+      "timeoutSeconds": 480,
       "scoring": "Judge",
-      "paperRef": "Same task as Appendix D, Case 2",
-      "imageWidth": 1024,
-      "imageHeight": 760,
-      "imageAlt": "Scatter/line chart from an arXiv paper plotting W_L against W_H for three lambda_L settings, with markers ap, sm, fi and ni (task input image)."
+      "paperRef": "Same task as Appendix D, Case 5",
+      "imageNote": "repo file hle/hle_02_image.jpg is actually PNG data; copied byte-for-byte with a .png extension",
+      "optionsCount": 9,
+      "imageWidth": 1159,
+      "imageHeight": 642,
+      "imageAlt": "Hypothetical tectonic plate map of a fictional planet with named plates (task input image)."
     },
     {
       "group": "mm-ms",
@@ -9275,7 +9275,7 @@ window.OSB = {
   ],
   "discrepancies": [
     "[paper-internal] Fig. 1(a) token labels GPT-6.1-Sol [309k] and GPT-6-Astra [340k] differ from Table 2 (313k, 345k); the page shows Table 2.",
-    "[paper-vs-code (info)] HLE is mapped to MM-SS by the paper (dominant modality), but only 2/10 repo tasks ship an image in workspace_files.",
+    "[paper-vs-code (info)] HLE is mapped to MM-MS by the paper (dominant modality), but only 2/10 repo tasks ship an image in workspace_files.",
     "[code (info)] Repo has 2 OSWorld task files with the same name/prompt 'OSWorld os - Rename Directory': ['task_osworld_04', 'task_osworld_08'] (files differ only by id and a comment line). Paper counts OSWorld as 9 tasks, repo also has 9 files.",
     "[paper-vs-code] README installs 11 Clawhub skills; the paper (§4.1, §A.2) integrates 9. README-only: ['gog', 'multi-search-engine']; paper-only: []. Name mapping assumed: agent-browser-clawdbot = 'Agent Browser', desktop-control = 'desktop-control-1.0.0'. Quick Start shows README commands; any 'skills used in the paper' list must show the paper's 9."
   ],

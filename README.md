@@ -47,7 +47,7 @@ token usage, reference cost, and accuracy&ndash;cost frontiers.*
 | | Single-step | Multi-step | Multi-step + tools |
 | --- | --- | --- | --- |
 | **Text** | **20 tasks**<br>LogiQA · GPQA | **87 tasks**<br>AdvancedIF · Bamboogle · SimpleQA · LongBench · LexEval · TableBench · FinQA | **55 tasks**<br>DeepSearchQA · WideSearch · Seal0 · TerminalBench2 · OpenAgentSafety · OSWorld |
-| **Multimodal** | **20 tasks**<br>SimpleVQA · HLE | **26 tasks**<br>CharXiv · MedXpertQA | **25 tasks**<br>AgentVista · MMSearch · MMSearchPlus |
+| **Multimodal** | **20 tasks**<br>SimpleVQA · CharXiv | **26 tasks**<br>HLE · MedXpertQA | **25 tasks**<br>AgentVista · MMSearch · MMSearchPlus |
 
 Scoring: 125 automated, 73 LLM-judged and 35 hybrid tasks.
 

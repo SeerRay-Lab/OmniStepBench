@@ -38,11 +38,11 @@ Options:
 
 Re-runs: pass the original and the re-run results (and both session dirs); the later file wins per task.
 
-NOTE on --mapping: paper Table 9 and the README put HLE in MM-SS and CharXiv in MM-MS, but the
-MM-SS / MM-MS numbers in paper Table 1 (and the README leaderboard) were computed with CharXiv in
-MM-SS and HLE in MM-MS (verified: this reproduces the archived runs' Table 1 values exactly). Both
-groups keep 20 / 26 tasks, so Text Avg, MM Avg and Overall are identical under both mappings. Use
-the default (table1) to compare against Table 1.
+NOTE on --mapping: paper Table 9 puts HLE in MM-SS and CharXiv in MM-MS, but the MM-SS / MM-MS
+numbers in paper Table 1 (and the README leaderboard) were computed with CharXiv in MM-SS and HLE in
+MM-MS (verified: this reproduces the archived runs' Table 1 values exactly). The README and the
+project page follow Table 1. Both groups keep 20 / 26 tasks, so Text Avg, MM Avg and Overall are
+identical under both mappings. Use the default (table1) to compare against Table 1.
 """
 
 from __future__ import annotations
