@@ -184,8 +184,8 @@ bash scripts/run.sh --model openrouter/<vendor>/<model> --runs 3         # optio
   ```
 
   Do not use `scripts/get_result.py` to compare with the paper: its source-to-group table is outdated.
-- **Comparability.** Paper Table 1 scores went through an evidence-based meta-judge audit, which removed 143 of 3,340
-  judge-based positive scores. That audit is not in this repository, so your scores are pre-audit. Compare with care,
+- **Comparability.** Paper Table 1 scores went through an evidence-based meta-judge audit, which removed 143 unsupported positive scores
+  among 4,096 judge/hybrid calls. That audit is not in this repository, so your scores are pre-audit. Compare with care,
   and name the judge and the OpenClaw version when you report numbers.
 - **Sending results to the maintainers.** Send the `results/*.json` file(s), the terminal log, the model id, the judge
   model and the output of `openclaw --version`.

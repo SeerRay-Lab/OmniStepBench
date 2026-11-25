@@ -216,9 +216,9 @@ window.OSB = {
       "mmTasks": "MM-SS+MM-MS+MM-MT = 20+26+25",
       "runs": "34 multimodal-capable models × 233 tasks + 8 text-only models × 162 text tasks",
       "judgeCalls": "42 models × 53 judge/hybrid text tasks + 34 models × 55 judge/hybrid multimodal tasks",
-      "maePool": "the 100 human-scored trajectories were sampled from the 3,340-call judge/hybrid validation pool"
+      "maePool": "the 100 human-scored trajectories were sampled from the 4,096-call judge/hybrid validation pool"
     },
-    "maePool": 3340
+    "maePool": 4096
   },
   "groupOrder": [
     "text-ss",
@@ -5232,8 +5232,8 @@ window.OSB = {
       "primaryJudge": 0.098,
       "afterMetaJudge": 0.049,
       "n": 100,
-      "definition": "Mean absolute score error vs. independent human expert scores on 100 trajectories stratified by original score, task group, and deployment mode, sampled from a 3,340-call judge/hybrid validation pool.",
-      "pool": 3340
+      "definition": "Mean absolute score error vs. independent human expert scores on 100 trajectories stratified by original score, task group, and deployment mode, sampled from a 4,096-call judge/hybrid validation pool.",
+      "pool": 4096
     },
     "rule": "s_audit = (1 − h) · s, with h = 1 only when the meta-judge confirms the positive score is unsupported (Eq. 10).",
     "triggerFeatures": [

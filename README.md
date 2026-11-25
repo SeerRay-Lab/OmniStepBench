@@ -78,7 +78,7 @@ LLM judges can award credit that the execution evidence does not support. OmniSt
 rules to every score that involves the primary judge (Qwen3.5-VL-Plus) and routes flagged cases to a meta-judge from a
 different model family (Claude-Opus-4.6). Of 9,218 model&ndash;task runs, 4,096 are judge/hybrid calls; 182 were flagged and
 **143 unsupported positive scores were removed**. Against human experts (100 stratified
-trajectories from a 3,340-call validation pool), the mean absolute error drops from 0.098 (primary judge) to 0.049 (after the meta-judge).
+trajectories from a 4,096-call judge/hybrid validation pool), the mean absolute error drops from 0.098 (primary judge) to 0.049 (after the meta-judge).
 
 | Pattern | Local | API | Total |
 | --- | ---: | ---: | ---: |
